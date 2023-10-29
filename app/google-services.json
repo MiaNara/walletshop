@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "893658533958",
+    "project_id": "walletshop-a228c",
+    "storage_bucket": "walletshop-a228c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:893658533958:android:28429c3238c47435cbba47",
+        "android_client_info": {
+          "package_name": "com.example.project"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDWtqBa_4I8jzP7a5-hsc5ZWG-8_uKCoCw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,36 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="320dp"
+    android:layout_marginHorizontal="5dp"
+    android:orientation="vertical">
+    <ImageView
+        android:id="@+id/walletImg"
+        android:layout_width="200dp"
+        android:layout_height="230dp"
+        android:layout_gravity="center"
+        android:layout_marginVertical="10dp"
+        android:contentDescription="wallet image"
+        android:scaleType="fitCenter"
+     />
+
+    <TextView
+        android:id="@+id/walletName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="14sp"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:fontFamily="@font/varela_font"
+        android:text="left" />
+    <TextView
+        android:id="@+id/walletPrice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:textAlignment="center"
+        android:fontFamily="@font/varela_font"
+        android:textColor="@color/black"
+        />
+</LinearLayout>

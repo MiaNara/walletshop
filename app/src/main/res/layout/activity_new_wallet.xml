@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginHorizontal="30dp"
+    tools:context=".adminActivity.NewWalletActivity">
+
+    <ImageView
+        android:id="@+id/backBtn"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="32dp"
+        android:contentDescription="@string/back_to_mainactivity"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_back_24" />
+
+    <TextView
+        android:id="@+id/textViewTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="80dp"
+        android:text="@string/add_new_wallet"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/editTextName"
+        android:layout_width="match_parent"
+         android:layout_height="48dp"
+        android:layout_below="@id/textViewTitle"
+        android:layout_marginTop="10dp"
+        android:paddingVertical="15dp"
+        android:paddingHorizontal="15dp"
+        android:hint="@string/name"
+        android:inputType="text" />
+
+    <EditText
+        android:id="@+id/editTextPrice"
+        android:layout_width="match_parent"
+         android:layout_height="48dp"
+        android:layout_below="@id/editTextName"
+        android:layout_marginTop="10dp"
+        android:paddingVertical="15dp"
+         android:paddingHorizontal="15dp"
+        android:hint="@string/price"
+        android:inputType="number" />
+
+    <EditText
+        android:id="@+id/editTextDescription"
+        android:layout_width="match_parent"
+         android:layout_height="48dp"
+        android:layout_below="@id/editTextPrice"
+        android:layout_marginTop="10dp"
+        android:paddingVertical="15dp"
+        android:paddingHorizontal="15dp"
+        android:hint="@string/description"
+        android:inputType="textMultiLine" />
+
+    <EditText
+        android:id="@+id/editTextMaterial"
+        android:layout_width="match_parent"
+         android:layout_height="48dp"
+        android:layout_below="@id/editTextDescription"
+        android:hint="@string/material"
+        android:layout_marginTop="10dp"
+        android:paddingVertical="15dp"
+        android:paddingHorizontal="15dp"
+        android:inputType="text" />
+
+    <EditText
+        android:id="@+id/editTextSize"
+        android:layout_width="match_parent"
+         android:layout_height="48dp"
+        android:layout_below="@id/editTextMaterial"
+        android:layout_marginTop="10dp"
+        android:paddingVertical="15dp"
+        android:paddingHorizontal="15dp"
+        android:hint="@string/size"
+        android:inputType="text"
+        android:importantForAutofill="no" />
+    <EditText
+        android:id="@+id/editTextImage"
+        android:layout_width="match_parent"
+         android:layout_height="48dp"
+        android:layout_below="@id/editTextSize"
+        android:layout_marginTop="10dp"
+        android:paddingVertical="15dp"
+        android:paddingHorizontal="15dp"
+        android:hint="@string/image_url"
+        android:inputType="text" />
+    <TextView
+        android:id="@+id/saveBtn"
+        android:layout_width="match_parent"
+         android:layout_height="48dp"
+        android:layout_below="@id/editTextImage"
+        android:layout_marginTop="16dp"
+        android:textColor="@color/white"
+        android:gravity="center"
+        android:background="@drawable/black_button"
+        android:text="@string/add" />
+
+</RelativeLayout>

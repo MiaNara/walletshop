@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
-import com.example.project.CartActivity;
+
 import com.example.project.R;
 import com.example.project.model.CartItem;
 
@@ -48,7 +48,6 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderViewHol
     public void onBindViewHolder(@NonNull OrderViewHolder holder, int position) {
         CartItem item = items.get(position);
         holder.itemNameTextView.setText(item.getWallet().getName());
-        Log.d("item name trong order ne" , item.getWallet().getName());
         String imageUrl = item.getWallet().getImage();
         Glide.with(holder.itemView.getContext())
                 .load(imageUrl)
@@ -74,7 +73,6 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderViewHol
             itemQuantityTextView = itemView.findViewById(R.id.itemQuantityTextView);
             totalItemMoney = itemView.findViewById(R.id.totalItemMoney);
             itemImageView = itemView.findViewById(R.id.itemImageView);
-            // You can find and initialize other views here
         }
     }
 }

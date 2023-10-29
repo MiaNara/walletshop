@@ -6,6 +6,10 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
 
     <application
         android:allowBackup="true"
@@ -19,6 +23,9 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".PersonalActivity"
+            android:exported="false" />
+        <activity
             android:name=".OrderActivity"
             android:exported="false" />
         <activity
@@ -28,8 +35,11 @@
             android:name=".adminActivity.EditWalletActivity"
             android:exported="false" />
         <activity
+            android:name=".adminActivity.AdminOrderActivity"
+            android:exported="true" />
+        <activity
             android:name=".adminActivity.AdminMainActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".LoginActivity"
             android:exported="true">

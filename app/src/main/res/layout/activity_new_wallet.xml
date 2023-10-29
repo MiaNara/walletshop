@@ -53,11 +53,14 @@
     <EditText
         android:id="@+id/editTextDescription"
         android:layout_width="match_parent"
-         android:layout_height="48dp"
+         android:layout_height="wrap_content"
         android:layout_below="@id/editTextPrice"
         android:layout_marginTop="10dp"
         android:paddingVertical="15dp"
         android:paddingHorizontal="15dp"
+        android:lines="5"
+        android:gravity="top|left"
+        android:scrollbars="vertical"
         android:hint="@string/description"
         android:inputType="textMultiLine" />
 

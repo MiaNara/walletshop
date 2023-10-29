@@ -6,14 +6,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
 import com.example.project.controller.CartManager;
-import com.example.project.model.Cart;
 import com.example.project.model.Wallet;
 
 public class WalletDetailActivity extends AppCompatActivity {
@@ -21,9 +19,6 @@ public class WalletDetailActivity extends AppCompatActivity {
     private TextView addToCartBtn;
     private TextView walletName, walletPrice, walletDescription, walletMaterial, walletSize;
     private ImageView walletImage, backBtn;
-
-    private Wallet object;
-    private int numberOrder = 1;
 
 
     @Override
@@ -72,17 +67,13 @@ public class WalletDetailActivity extends AppCompatActivity {
                 storage.addToStorage(object);
                 // Provide feedback to the user (e.g., show a toast)
                 Toast.makeText(WalletDetailActivity.this, "Item added to cart", Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(WalletDetailActivity.this, MainActivity.class));
+                Intent intent = new Intent(WalletDetailActivity.this, MainActivity.class);
+                startActivity(intent);
             }
         });
 
 
 
     }
-//    private void bottom_navigation() {
-//        LinearLayout homeBtn = findViewById(R.id.homeBtn);
-//        LinearLayout cartBtn = findViewById(R.id.cartBtn);
-//        homeBtn.setOnClickListener(v -> startActivity(new Intent(WalletDetailActivity.this, MainActivity.class)));
-//        cartBtn.setOnClickListener(v -> startActivity(new Intent(WalletDetailActivity.this, CartActivity.class)));
-//    }
+
 }

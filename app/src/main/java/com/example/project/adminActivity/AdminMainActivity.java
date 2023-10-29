@@ -11,6 +11,9 @@ import android.util.Log;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.example.project.MainActivity;
+import com.example.project.OrderActivity;
+import com.example.project.PersonalActivity;
 import com.example.project.R;
 import com.example.project.adapter.WalletAdminAdapter;
 import com.example.project.api.APIClient;
@@ -49,8 +52,6 @@ public class AdminMainActivity extends AppCompatActivity {
             public void onResponse(Call<ArrayList<Wallet>> call, Response<ArrayList<Wallet>> response) {
                 if (response.isSuccessful()) {
                     ArrayList<Wallet> wallets = response.body();
-                    Log.d("responseSuccess", "This is a debug message");
-                    Log.d("respondBody", response.body().toString());
                     adapter.setWalletList(wallets);
                 } else {
                     Toast.makeText(AdminMainActivity.this, response.errorBody().toString(), Toast.LENGTH_SHORT);
@@ -70,8 +71,19 @@ public class AdminMainActivity extends AppCompatActivity {
     private void bottom_navigation() {
         LinearLayout homeBtn = findViewById(R.id.switchToHomePageBtn);
         LinearLayout addBtn = findViewById(R.id.switchToAddPageBtn);
+        LinearLayout orderBtn = findViewById(R.id.switchToOrderPageBtn);
+        LinearLayout personalBtn = findViewById(R.id.switchToPersonalPageBtn);
         homeBtn.setOnClickListener(v -> startActivity(new Intent(AdminMainActivity.this, AdminMainActivity.class)));
         addBtn.setOnClickListener(v -> startActivity(new Intent(AdminMainActivity.this, NewWalletActivity.class)));
+        orderBtn.setOnClickListener(v -> {
+            Intent intent = new Intent(AdminMainActivity.this, AdminOrderActivity.class);
+            startActivity(intent);
+        });
+        personalBtn.setOnClickListener(v -> {
+            Intent intent = new Intent(AdminMainActivity.this, PersonalActivity.class);
+
+            startActivity(intent);
+        });
     }
 
 

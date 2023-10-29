@@ -5,10 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -33,7 +31,6 @@ public class NewWalletActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_wallet);
         init();
-//        bottom_navigation();
     }
     public void init(){
         etName = findViewById(R.id.editTextName);
@@ -82,10 +79,5 @@ public class NewWalletActivity extends AppCompatActivity {
 
                 });
     }
-//    private void bottom_navigation() {
-//        LinearLayout homeBtn = findViewById(R.id.switchToHomePageBtn);
-//        LinearLayout addBtn = findViewById(R.id.switchToAddPageBtn);
-//        homeBtn.setOnClickListener(v -> startActivity(new Intent(NewWalletActivity.this, AdminMainActivity.class)));
-//        addBtn.setOnClickListener(v -> startActivity(new Intent(NewWalletActivity.this, NewWalletActivity.class)));
-//    }
+
 }

@@ -1,22 +1,15 @@
 package com.example.project.controller;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
-
 import com.example.project.adminActivity.AdminMainActivity;
-import com.example.project.adminActivity.EditWalletActivity;
 import com.example.project.api.APIClient;
 import com.example.project.model.Wallet;
 import com.example.project.service.WalletApiService;
-
-import java.util.ArrayList;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;

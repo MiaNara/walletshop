@@ -7,18 +7,24 @@ public class Order {
     private int totalPrice;
     private String email;
     private String location;
+    private String phone;
 
-//    public Order(ArrayList<CartItem> order, String email, String location) {
-//            this.order = order;
-//        this.email = email;
-//        this.location = location;
-//    }
 
-    public Order(ArrayList<CartItem> order, int totalPrice, String email, String location) {
+    public Order(ArrayList<CartItem> order, int totalPrice, String email, String location, String phone) {
         this.order = order;
         this.totalPrice = totalPrice;
         this.email = email;
         this.location = location;
+        this.phone = phone;
+    }
+
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     public int getTotalPrice() {

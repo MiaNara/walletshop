@@ -26,7 +26,6 @@ public class LoginActivity extends AppCompatActivity {
     public void init(){
         TextView loginBtn = findViewById(R.id.loginBtn);
         TextView registerBtn = findViewById(R.id.registerBtn);
-        TextView resetPasswordBtn = findViewById(R.id.resetPasswordBtn);
         registerBtn.setOnClickListener(v -> goToRegister());
         loginBtn.setOnClickListener(v -> {
             login();
@@ -55,7 +54,6 @@ public class LoginActivity extends AppCompatActivity {
                                 startActivity(intent);
                             }else{
                                 Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                                intent.putExtra("email", user.getEmail());
                                 startActivity(intent);
                             }
 

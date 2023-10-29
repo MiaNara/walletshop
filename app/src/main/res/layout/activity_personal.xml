@@ -4,66 +4,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".PersonalActivity">
 
-
-    <androidx.core.widget.NestedScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="30dp"
-                android:layout_marginTop="30dp"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/welcome"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingVertical="5dp"
-                    android:text="@string/welcome" />
-
-                <TextView
-                    android:id="@+id/username"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingVertical="5dp"
-                    android:text="@string/admin"
-                    android:textStyle="bold" />
-            </LinearLayout>
-
-
-            <TextView
-                android:id="@+id/textView10"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="30dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="5dp"
-                android:text="@string/all_product"
-                android:textSize="18sp"
-                android:textStyle="bold" />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/admin_all_wallet_rv"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:paddingHorizontal="10dp"
-                android:paddingBottom="100dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
-
-        </LinearLayout>
-
-
-    </androidx.core.widget.NestedScrollView>
+    <TextView
+        android:id="@+id/logoutBtn"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:textColor="@color/white"
+        android:gravity="center"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:layout_marginTop="100dp"
+        android:contentDescription="log out"
+        android:background="@drawable/black_button"
+        android:text="Log out"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
@@ -71,6 +28,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
+        tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteY="624dp">
         <com.google.android.material.bottomappbar.BottomAppBar
             android:id="@+id/bottomAppBar"
@@ -81,52 +39,47 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:baselineAligned="true"
                 android:orientation="horizontal">
 
 
                 <LinearLayout
-                    android:id="@+id/switchToHomePageBtn"
+                    android:id="@+id/homeBtn"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="0.25"
-                    android:orientation="vertical"
-                    tools:ignore="UseCompoundDrawables">
+                    android:orientation="vertical">
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:contentDescription="@string/switch_to_home"
                         app:srcCompat='@drawable/baseline_home_24'/>
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/home"
+                        android:text="Home"
                         android:textAlignment="center"
                         android:textColor="@color/black"/>
                 </LinearLayout>
 
 
                 <LinearLayout
-                    android:id="@+id/switchToAddPageBtn"
+                    android:id="@+id/cartBtn"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="0.25"
-                    android:orientation="vertical"
-                    tools:ignore="UseCompoundDrawables">
+                    android:orientation="vertical">
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:contentDescription="@string/switch_to_add_new_wallet_page"
-                        app:srcCompat='@drawable/baseline_add_circle_24'/>
+                        app:srcCompat='@drawable/baseline_shopping_cart_24'/>
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/add"
+                        android:text="Cart"
                         android:textAlignment="center"
                         android:textColor="@color/black"/>
                 </LinearLayout>
                 <LinearLayout
-                    android:id="@+id/switchToOrderPageBtn"
+                    android:id="@+id/orderBtn"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="0.25"
@@ -142,24 +95,25 @@
                         android:textAlignment="center"
                         android:textColor="@color/black"/>
                 </LinearLayout>
+
                 <LinearLayout
-                    android:id="@+id/switchToPersonalPageBtn"
+                    android:id="@+id/profileBtn"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="0.25"
-                    android:orientation="vertical"
-                    tools:ignore="UseCompoundDrawables">
+                    android:orientation="vertical">
+
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:contentDescription="@string/switch_to_personal_page"
-                        app:srcCompat='@drawable/baseline_person_24'/>
+                        app:srcCompat='@drawable/baseline_person_24' />
+
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/profile"
+                        android:text="Profile"
                         android:textAlignment="center"
-                        android:textColor="@color/black"/>
+                        android:textColor="@color/black" />
                 </LinearLayout>
 
             </LinearLayout>
@@ -167,5 +121,5 @@
 
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>
 
+</androidx.constraintlayout.widget.ConstraintLayout>

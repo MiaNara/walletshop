@@ -13,20 +13,21 @@ public class CartManager {
         CartManager.storage = storage;
     }
 
-    public void addToStorage(Wallet object){
-//        boolean isExisted = false;
-//        int index = 0;
-//       for(int i = 0; i < this.getStorage().size(); i++){
-//           if(this.getStorage().get(i).getWallet().getId().equals(object.getId())){
-//               isExisted = true;
-//               break;
-//           }
-//       }
-//       if(isExisted){
-//           this.getStorage().get(index).setAmount( this.getStorage().get(index).getAmount() + 1);
-//       } else {
-           storage.add(new CartItem(object, 1));
-//           updateTotalCart();
+    public void addToStorage(Wallet object) {
+        boolean isExisted = false;
+        int index = 0;
+       for(int i = 0; i < this.getStorage().size(); i++){
+           if(this.getStorage().get(i).getWallet().getId().equals(object.getId())){
+               isExisted = true;
+               index = i;
+               break;
+           }
+       }
+       if(isExisted){
+           this.getStorage().get(index).setAmount( this.getStorage().get(index).getAmount() + 1);
+       } else {
+        storage.add(new CartItem(object, 1));
+    }
 
 
     }
@@ -37,7 +38,6 @@ public class CartManager {
                 break;
             }
         }
-//        updateTotalCart();
     }
 
     public void decreaseNumberOfItems(Wallet object){
@@ -50,25 +50,20 @@ public class CartManager {
                 break;
             }
         }
-//        updateTotalCart();
 
     }
 
-    public int totalCart(ArrayList<CartItem> cartItem) {
-        int total = 0;
-
-        for (CartItem item : cartItem) {
-            total += Math.multiplyExact(item.getAmount(), Integer.parseInt(item.getWallet().getPrice()));
-        }
-        return total;
-    }
+//    public int totalCart(ArrayList<CartItem> cartItem) {
+//        int total = 0;
+//
+//        for (CartItem item : cartItem) {
+//            total += Math.multiplyExact(item.getAmount(), Integer.parseInt(item.getWallet().getPrice()));
+//        }
+//        return total;
+//    }
     public ArrayList<CartItem> getStorage() {
         return storage;
     }
 
-//    public  void updateTotalCart() {
-//        totalCart = totalCart(this.getStorage());
-//
-//    }
 
 }

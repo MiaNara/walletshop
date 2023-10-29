@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -18,7 +17,6 @@ import com.example.project.model.Wallet;
 
 
 public class EditWalletActivity extends AppCompatActivity {
-//    WalletApiService apiService = APIClient.getClient().create(WalletApiService.class);
     WalletController controller = new WalletController();
     EditText etName, etPrice, etDescription, etMaterial, etSize, etImage;
     TextView saveBtn;
@@ -44,7 +42,6 @@ public class EditWalletActivity extends AppCompatActivity {
     }
     private void getBundle(){
         object = getIntent().getParcelableExtra("object");
-        Log.d("object la gi", object.getId().toString());
         etImage.setText(object.getImage());
         etName.setText(object.getName());
         etPrice.setText(object.getPrice());
@@ -73,11 +70,5 @@ public class EditWalletActivity extends AppCompatActivity {
         });
 
     }
-//    private void bottom_navigation() {
-//        LinearLayout homeBtn = findViewById(R.id.switchToHomePageBtn);
-//        LinearLayout addBtn = findViewById(R.id.switchToAddPageBtn);
-//        homeBtn.setOnClickListener(v -> startActivity(new Intent(EditWalletActivity.this, AdminMainActivity.class)));
-//        addBtn.setOnClickListener(v -> startActivity(new Intent(EditWalletActivity.this, NewWalletActivity.class)));
-//    }
 
 }

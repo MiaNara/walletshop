@@ -27,16 +27,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.project.adapter.CartAdapter;
-import com.example.project.adminActivity.AdminMainActivity;
-import com.example.project.adminActivity.NewWalletActivity;
+
 import com.example.project.api.APIClient;
 import com.example.project.controller.CartManager;
 import com.example.project.model.CartItem;
 import com.example.project.model.Order;
-import com.example.project.model.Wallet;
 import com.example.project.service.OrderApiService;
-import com.example.project.service.WalletApiService;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
@@ -53,10 +51,9 @@ public class CartActivity extends AppCompatActivity {
     Button checkoutButton;
     ScrollView scrollView;
     CartManager storage = new CartManager();
-    EditText location;
+    EditText location, phone;
     String address;
     OrderApiService apiService = APIClient.getClient().create(OrderApiService.class);
-    String email;
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,7 +73,7 @@ public class CartActivity extends AppCompatActivity {
         emptyTxt = findViewById(R.id.emptyTxt);
         scrollView = findViewById(R.id.scrollView2);
         location = findViewById(R.id.location);
-         email = getIntent().getStringExtra("email");
+        phone = findViewById(R.id.phone);
 
 
     }
@@ -101,8 +98,9 @@ public class CartActivity extends AppCompatActivity {
             int totalPrice = totalCart();
             totalTxt.setText(String.valueOf(totalPrice));
             backBtn.setOnClickListener(v -> startActivity(new Intent(CartActivity.this, MainActivity.class)));
+            String email = getIntent().getStringExtra("email");
             checkoutButton.setOnClickListener(v -> {
-                Order newOrder = new Order(storage.getStorage(),totalPrice, email, location.getText().toString() );
+                Order newOrder = new Order(storage.getStorage(),totalPrice, email, location.getText().toString(), phone.getText().toString() );
                 createOrder(newOrder);
 
             });
@@ -138,6 +136,8 @@ public class CartActivity extends AppCompatActivity {
                 .enqueue(new Callback<Order>() {
                     @Override
                     public void onResponse(@NonNull Call<Order> call, @NonNull Response<Order> response) {
+                        storage.setStorage(new ArrayList<>());
+                        String email = getIntent().getStringExtra("email");
                         Toast.makeText(CartActivity.this, "Order successfully!", Toast.LENGTH_SHORT).show();
                         Intent newIntent = new Intent(CartActivity.this, OrderActivity.class);
                         newIntent.putExtra("email", email);
@@ -197,7 +197,7 @@ public class CartActivity extends AppCompatActivity {
                 StringBuilder strReturnedAddress = new StringBuilder("");
 
                 for (int i = 0; i <= returnedAddress.getMaxAddressLineIndex(); i++) {
-                    strReturnedAddress.append(returnedAddress.getAddressLine(i)).append("\n");
+                    strReturnedAddress.append(returnedAddress.getAddressLine(i));
                 }
                 strAdd = strReturnedAddress.toString();
             } else {

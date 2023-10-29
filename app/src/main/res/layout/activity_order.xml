@@ -70,63 +70,11 @@
                 android:orientation="vertical">
 
                 <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/order_rv"
+                    android:id="@+id/eachOrderRv"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/grey_background"
-                    android:paddingVertical="20dp"
-                    android:paddingHorizontal="10dp"
-                    android:orientation="vertical">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginBottom="10dp"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:id="@+id/location"
-                            android:layout_width="150dp"
-                            android:layout_height="wrap_content"
-                            android:textSize="16sp"
-                            android:text="Delivery location:" />
-
-                        <TextView
-                            android:id="@+id/deliveryTxt"
-                            style="@style/textStyle"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textStyle="bold"
-                            android:text="your location" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:id="@+id/textView21"
-                            android:layout_height="wrap_content"
-                            android:layout_width="150dp"
-                            android:textSize="16sp"
-                            android:text="Total:" />
-
-                        <TextView
-                            android:id="@+id/totalTxt"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textStyle="bold"
-                            style="@style/textStyle"
-                            android:text="$-" />
-                    </LinearLayout>
-                </LinearLayout>
-
-<!--                <androidx.constraintlayout.widget.ConstraintLayout-->
+                <!--                <androidx.constraintlayout.widget.ConstraintLayout-->
 <!--                    android:layout_width="match_parent"-->
 <!--                    android:layout_height="130dp"-->
 <!--                    android:layout_marginTop="8dp"-->

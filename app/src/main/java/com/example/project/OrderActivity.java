@@ -28,23 +28,22 @@ import retrofit2.Response;
 
 public class OrderActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
-    OrderAdapter adapter;
-    TextView totalTxt, emptyTxt, tvLocation;
+    private OrderAdapter adapter;
+    TextView totalTxt, emptyTxt, tvLocation, deliveryText;
     ImageView backBtn3, backBtn4;
     ScrollView scrollView;
     String location;
+//    Order recentOrder = null;
     OrderApiService apiService = APIClient.getClient().create(OrderApiService.class);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order);
-        getOrder();
         init();
         getBundle();
 
     }
-
     private void init() {
         recyclerView = findViewById(R.id.order_rv);
         totalTxt = findViewById(R.id.totalTxt);
@@ -53,44 +52,51 @@ public class OrderActivity extends AppCompatActivity {
         emptyTxt = findViewById(R.id.emptyTxt);
         scrollView = findViewById(R.id.orderScrollView);
         tvLocation = findViewById(R.id.deliveryTxt);
+        deliveryText = findViewById(R.id.deliveryTxt);
 
     }
 
-    private void getOrder() {
+    private void getBundle() {
         String email = getIntent().getStringExtra("email");
-        Log.d("email", email);
         Call<ArrayList<Order>> call = apiService.getOrders();
         call.enqueue(new Callback<ArrayList<Order>>() {
             @Override
             public void onResponse(Call<ArrayList<Order>> call, Response<ArrayList<Order>> response) {
                 if (response.isSuccessful()) {
                     ArrayList<Order> orders = response.body();
-                    Log.d("responseSuccess", "This is a debug message");
                     assert response.body() != null;
-                    Log.d("respondBody", response.body().toString());
-                    Order recentOrder = new Order(orders.get(orders.size() - 1).getOrder(), orders.get(orders.size() - 1).getEmail(), orders.get(orders.size() - 1).getLocation());
-
+                    Order recentOrder = null;
                     assert orders != null;
-//                    for (Order order : orders) {
-//                        Log.d("getmail",order.getEmail());
-//                        if (order.getEmail().equals(email)) {
-//
-//                            recentOrder = new Order(orders.get(orders.size() - 1).getOrder(), order.getEmail(), order.getLocation());
-//                            Log.d("recentOrder", recentOrder.getOrder().toString());
-//                            break;
-//                        }
-//                    }
-                    adapter = new OrderAdapter();
-                    LinearLayoutManager layoutManager = new LinearLayoutManager(OrderActivity.this);
-                    recyclerView.setLayoutManager(layoutManager);
+                    for (int i = 0; i < orders.size(); i++) {
+                        if (orders.get(i).getEmail().equals(email)) {
+                            recentOrder = new Order(orders.get(i).getOrder(), orders.get(i).getTotalPrice(), orders.get(i).getEmail(), orders.get(i).getLocation());
+                            Log.d("recentOrder", recentOrder.getOrder().toString());
+                        }
+                    }
 
-                    recyclerView.setAdapter(adapter);
-                    adapter.setItems(recentOrder.getOrder());
+                    if (recentOrder == null) {
+                        emptyTxt.setVisibility(View.VISIBLE);
+                        backBtn3.setVisibility(View.VISIBLE);
+                        scrollView.setVisibility(View.GONE);
+                        backBtn4.setOnClickListener(v -> startActivity(new Intent(OrderActivity.this, MainActivity.class)));
 
-                    // Update the adapter with the retrieved data
+                    } else {
+                        emptyTxt.setVisibility(View.GONE);
+                        backBtn3.setVisibility(View.GONE);
+                        scrollView.setVisibility(View.VISIBLE);
+                        adapter = new OrderAdapter();
+                        LinearLayoutManager layoutManager = new LinearLayoutManager(OrderActivity.this);
+                        recyclerView.setLayoutManager(layoutManager);
+
+                        recyclerView.setAdapter(adapter);
+                        adapter.setItems(recentOrder.getOrder());
+                        deliveryText.setText(recentOrder.getLocation());
+                        totalTxt.setText(String.valueOf(recentOrder.getTotalPrice()) + "đ");
+                    }
+
+
                 } else {
                     Toast.makeText(OrderActivity.this, "Can not load order list data", Toast.LENGTH_SHORT).show();
-                    // Handle API error
                 }
             }
 
@@ -99,19 +105,5 @@ public class OrderActivity extends AppCompatActivity {
                 Toast.makeText(OrderActivity.this, "Error", Toast.LENGTH_SHORT).show();
             }
         });
-    }
-
-    private void getBundle() {
-//        if (recentOrder.getOrder().isEmpty()) {
-//            emptyTxt.setVisibility(View.VISIBLE);
-//            backBtn3.setVisibility(View.VISIBLE);
-//            scrollView.setVisibility(View.GONE);
-//            backBtn4.setOnClickListener(v -> startActivity(new Intent(OrderActivity.this, MainActivity.class)));
-//
-//        } else {
-//            emptyTxt.setVisibility(View.GONE);
-//            backBtn3.setVisibility(View.GONE);
-//            scrollView.setVisibility(View.VISIBLE);
-//        }
     }
 }

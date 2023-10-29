@@ -98,11 +98,11 @@ public class CartActivity extends AppCompatActivity {
 
             recyclerView.setAdapter(cartAdapter);
             cartAdapter.setItems(storage.getStorage());
-
-            totalTxt.setText(String.valueOf(totalCart()));
+            int totalPrice = totalCart();
+            totalTxt.setText(String.valueOf(totalPrice));
             backBtn.setOnClickListener(v -> startActivity(new Intent(CartActivity.this, MainActivity.class)));
             checkoutButton.setOnClickListener(v -> {
-                Order newOrder = new Order(storage.getStorage(), email, location.getText().toString() );
+                Order newOrder = new Order(storage.getStorage(),totalPrice, email, location.getText().toString() );
                 createOrder(newOrder);
 
             });

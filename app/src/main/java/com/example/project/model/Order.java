@@ -4,13 +4,29 @@ import java.util.ArrayList;
 
 public class Order {
     private ArrayList<CartItem> order;
+    private int totalPrice;
     private String email;
     private String location;
 
-    public Order(ArrayList<CartItem> order, String email, String location) {
-            this.order = order;
+//    public Order(ArrayList<CartItem> order, String email, String location) {
+//            this.order = order;
+//        this.email = email;
+//        this.location = location;
+//    }
+
+    public Order(ArrayList<CartItem> order, int totalPrice, String email, String location) {
+        this.order = order;
+        this.totalPrice = totalPrice;
         this.email = email;
         this.location = location;
+    }
+
+    public int getTotalPrice() {
+        return totalPrice;
+    }
+
+    public void setTotalPrice(int totalPrice) {
+        this.totalPrice = totalPrice;
     }
 
     public ArrayList<CartItem> getOrder() {
